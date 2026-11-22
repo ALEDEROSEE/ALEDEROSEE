@@ -1,0 +1,59 @@
+name: Actualizar perfil
+
+on:
+  schedule:
+    - cron: "17 11 * * *" # todos los días a las 06:17 (hora de Perú)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/perfil.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: perfil
+  cancel-in-progress: false
+
+jobs:
+  estadisticas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Generar la tarjeta de actividad
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/build.py stats
+
+      - name: Guardar si cambió
+        run: |
+          if git diff --quiet -- assets; then
+            echo "Sin cambios"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          git commit -m "Actualiza la tarjeta de actividad"
+          git push
+
+  serpiente:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake-light.svg?color_snake=#7F52FF&color_dots=#ebedf0,#dcd2fb,#b9a3ff,#8f6bff,#6a3df0
+            dist/snake-dark.svg?palette=github-dark&color_snake=#ff6b7a&color_dots=#161b22,#2b2357,#4a36a0,#7f52ff,#c0a8ff
+
+      - uses: crazy-max/ghaction-github-pages@v5
+        with:
+          target_branch: output
+          build_dir: dist
+          commit_message: Actualiza la serpiente de contribuciones
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
