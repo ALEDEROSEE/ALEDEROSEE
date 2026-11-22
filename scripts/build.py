@@ -398,7 +398,7 @@ query($login: String!) {
   user(login: $login) {
     repositories(ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC, first: 100) {
       totalCount
-      nodes { languages(first: 10, orderBy: {field: SIZE, direction: DESC}) { edges { size node { name color } } } }
+      nodes { name languages(first: 10, orderBy: {field: SIZE, direction: DESC}) { edges { size node { name color } } } }
     }
     repositoriesContributedTo(first: 1, includeUserRepositories: false,
                               contributionTypes: [COMMIT, PULL_REQUEST]) { totalCount }
@@ -451,6 +451,8 @@ def resumir(u: dict) -> dict:
     desde = date.fromisoformat(semanas_api[inicio]["contributionDays"][0]["date"])
     bytes_por_leng: dict[str, list] = {}
     for repo in u["repositories"]["nodes"]:
+        if repo["name"] == USUARIO:  # el repo del perfil solo tiene este script
+            continue
         for e in repo["languages"]["edges"]:
             n = e["node"]["name"]
             bytes_por_leng.setdefault(n, [0, e["node"]["color"] or "#8b949e"])
