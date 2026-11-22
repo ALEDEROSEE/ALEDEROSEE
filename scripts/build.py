@@ -271,7 +271,7 @@ PROYECTOS = [
     },
     {
         "slug": "trazo-y-papel", "titulo": "Trazo y Papel", "icono": "bolsa",
-        "lenguaje": "JavaScript", "sub": "React + Django REST Framework", "etiqueta": "WEB",
+        "lenguaje": "Python", "sub": "React + Django REST Framework", "etiqueta": "WEB",
         "grad": ("#F59E0B", "#EF4444"),
         "desc": "Tienda de papelería con catálogo, búsqueda, filtros por oferta, recomendaciones y control de stock desde el administrador.",
         "tags": ["React", "Vite", "shadcn/ui", "Django"],
