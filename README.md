@@ -8,7 +8,8 @@
   <a href="#sobre-mí"><b>Sobre mí</b></a> &nbsp;·&nbsp;
   <a href="#tecnologías"><b>Tecnologías</b></a> &nbsp;·&nbsp;
   <a href="#proyectos-destacados"><b>Proyectos</b></a> &nbsp;·&nbsp;
-  <a href="#actividad"><b>Actividad</b></a>
+  <a href="#actividad"><b>Actividad</b></a> &nbsp;·&nbsp;
+  <a href="#contacto"><b>Contacto</b></a>
 </p>
 
 ## Sobre mí
@@ -157,6 +158,15 @@ object Alejandro {
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ALEDEROSEE/ALEDEROSEE/output/snake-light.svg">
   <img alt="Serpiente que recorre mi calendario de contribuciones" src="https://raw.githubusercontent.com/ALEDEROSEE/ALEDEROSEE/output/snake-dark.svg" width="100%">
 </picture>
+
+## Contacto
+
+Si quieres conversar sobre algún proyecto, prácticas o una idea para construir juntos, escríbeme por LinkedIn.
+
+<p>
+  <a href="https://www.linkedin.com/in/alejandro-alvarez-sayaverde/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Conectemos-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  <a href="https://github.com/ALEDEROSEE?tab=repositories"><img alt="Repositorios en GitHub" src="https://img.shields.io/badge/GitHub-Mis_repositorios-7F52FF?style=for-the-badge&logo=github&logoColor=white"></a>
+</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/pie-dark.svg">
